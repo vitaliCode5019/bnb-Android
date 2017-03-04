@@ -1,0 +1,57 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_1"
+    android:padding="20dp"
+    tools:context="com.bicyclebnb.groupridefinder.fragments.BikeShopsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                style="@style/CellLayoutStyle1">
+                <TextView
+                    android:text="NAME:"
+                    style="@style/TitleTextStyle"/>
+                <TextView
+                    android:id="@+id/txtName"
+                    style="@style/ContentTextStyle"/>
+            </LinearLayout>
+            <LinearLayout
+                style="@style/CellLayoutStyle2">
+                <TextView
+                    android:text="LOCATION:"
+                    style="@style/TitleTextStyle"/>
+                <TextView
+                    android:id="@+id/txtLocation"
+                    style="@style/ContentTextStyle"/>
+            </LinearLayout>
+            <LinearLayout
+                style="@style/CellLayoutStyle1">
+                <TextView
+                    android:text="PROXIMITY:"
+                    style="@style/TitleTextStyle"/>
+                <TextView
+                    android:id="@+id/txtProximity"
+                    style="@style/ContentTextStyle"/>
+            </LinearLayout>
+            <LinearLayout
+                style="@style/CellLayoutStyle2">
+                <TextView
+                    android:text="PHONE:"
+                    style="@style/TitleTextStyle"/>
+                <TextView
+                    android:id="@+id/txtPhone"
+                    style="@style/ContentTextStyle"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</FrameLayout>

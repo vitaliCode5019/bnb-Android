@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Group Ride Finder</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="accommodations">Accommodations</string>
+    <string name="bike_shops">Bike Shops</string>
+    <string name="races">Races</string>
+    <string name="group_rides">Group Rides</string>
+    <string name="search_location">Search Location</string>
+    <string name="add_new">Add New</string>
+    <string name="previous">Previous</string>
+    <string name="show_details">Show Details</string>
+    <string name="hide_details">Hide Details</string>
+    <string name="next">Next</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

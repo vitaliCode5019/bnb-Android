@@ -1,0 +1,240 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bicyclebnb.groupridefinder.MapsActivity">
+
+    <RelativeLayout
+        android:id="@+id/topbar"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorPrimary">
+        <Button
+            android:id="@+id/btnSearchLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="@string/search_location"
+            style="@style/YellowButtonStyle"/>
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/bnb_logo_w"/>
+
+        <Button
+            android:id="@+id/btnAddNew"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:text="@string/add_new"
+            style="@style/YellowButtonStyle"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@id/topbar"
+        android:layout_above="@+id/bottombar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/frame_title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/ocean">
+            <TextView
+                android:id="@+id/lbl_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="@string/group_rides"/>
+        </FrameLayout>
+
+
+
+        <FrameLayout
+            android:layout_below="@id/frame_title"
+            android:layout_above="@+id/frame_menu"
+            android:id="@+id/frame_map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/imgMyLocation"
+                android:clickable="true"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@mipmap/ic_my_location"
+                android:layout_gravity="right|bottom"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frame_menu"
+            android:layout_above="@+id/frame_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+
+            <Button
+                android:id="@+id/btnPrevious"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical|left"
+                android:text="@string/previous"
+                style="@style/DefaultButtonStyle"/>
+
+            <Button
+                android:id="@+id/btnShowDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:text="@string/show_details"
+                style="@style/DefaultButtonStyle"/>
+
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical|right"
+                android:text="@string/next"
+                style="@style/DefaultButtonStyle"/>
+        </FrameLayout>
+
+        <android.support.percent.PercentFrameLayout
+            android:id="@+id/frame_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+            <FrameLayout
+                android:id="@+id/fragment_container"
+                android:visibility="gone"
+                android:background="@color/colorPrimary"
+                app:layout_widthPercent="100%"
+                app:layout_aspectRatio="170%" />
+        </android.support.percent.PercentFrameLayout>
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/bottombar"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tab_height"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:background="#CCCCCC"
+        android:baselineAligned="false">
+
+        <RelativeLayout
+            android:id="@+id/tab1"
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/img_tab"
+                android:layout_width="@dimen/tab_icon_size"
+                android:layout_height="@dimen/tab_icon_size"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/ic_tab_group_ride"/>
+            <TextView
+                android:id="@+id/lbl_tab"
+                android:layout_below="@id/img_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/tab_label_size"
+                android:text="@string/group_rides"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/tab2"
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/img_tab"
+                android:layout_width="@dimen/tab_icon_size"
+                android:layout_height="@dimen/tab_icon_size"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/ic_tab_bike_shops"/>
+            <TextView
+                android:id="@+id/lbl_tab"
+                android:layout_below="@id/img_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/tab_label_size"
+                android:text="@string/bike_shops"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/tab3"
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/img_tab"
+                android:layout_width="@dimen/tab_icon_size"
+                android:layout_height="@dimen/tab_icon_size"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/ic_tab_accommodations"/>
+            <TextView
+                android:id="@+id/lbl_tab"
+                android:layout_below="@id/img_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/tab_label_size"
+                android:text="@string/accommodations"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/tab4"
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/img_tab"
+                android:layout_width="@dimen/tab_icon_size"
+                android:layout_height="@dimen/tab_icon_size"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/ic_tab_races" />
+            <TextView
+                android:id="@+id/lbl_tab"
+                android:layout_below="@id/img_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/tab_label_size"
+                android:text="@string/races"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

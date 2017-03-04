@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#353B42</color>
+    <color name="colorPrimaryDark">#353B42</color>
+    <color name="colorAccent">@color/yellow</color>
+
+
+    <color name="yellow">#FF9300</color>
+    <color name="yellow_dark">#88FF9300</color>
+
+    <color name="blue">#007AFF</color>
+    <color name="blue_dark">#88007AFF</color>
+
+    <color name="ocean">#003258</color>
+
+    <color name="gray_1">#424242</color>
+    <color name="gray_2">#555555</color>
+    <color name="gray_3">#808080</color>
+</resources>
