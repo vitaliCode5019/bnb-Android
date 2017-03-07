@@ -14,12 +14,25 @@
         android:background="@color/colorPrimary">
         <Button
             android:id="@+id/btnSearchLocation"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:text="@string/search_location"
             style="@style/YellowButtonStyle"/>
+
+        <!--<EditText-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:hint="@string/search_location"-->
+            <!--android:textSize="12dp"-->
+            <!--android:visibility="gone"-->
+            <!--android:padding="4dp"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:background="@drawable/text_round_bg"-->
+            <!--android:layout_marginLeft="10dp" />-->
 
         <ImageView
             android:layout_width="60dp"
@@ -60,10 +73,22 @@
                 android:text="@string/group_rides"/>
         </FrameLayout>
 
-
+        <FrameLayout
+            android:id="@+id/frame_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/frame_title"
+            android:background="#fff">
+            <fragment
+                android:id="@+id/place_autocomplete_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                />
+        </FrameLayout>
 
         <FrameLayout
-            android:layout_below="@id/frame_title"
+            android:layout_below="@id/frame_search"
             android:layout_above="@+id/frame_menu"
             android:id="@+id/frame_map"
             android:layout_width="match_parent"
@@ -76,6 +101,7 @@
 
             <ImageView
                 android:id="@+id/imgMyLocation"
+                android:visibility="gone"
                 android:clickable="true"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
@@ -83,6 +109,7 @@
                 android:layout_gravity="right|bottom"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"/>
+
         </FrameLayout>
 
         <FrameLayout
@@ -210,8 +237,18 @@
                 android:layout_centerHorizontal="true"
                 android:textSize="@dimen/tab_label_size"
                 android:text="@string/accommodations"/>
-        </RelativeLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/img_tab"
+                android:layout_marginLeft="24dp"
+                android:background="@drawable/red_round_bg"
+                android:textSize="9sp"
+                android:padding="3dp"
+                android:text="@string/beta"
+                android:textColor="#fff" />
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/tab4"

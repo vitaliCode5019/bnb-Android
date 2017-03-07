@@ -14,4 +14,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_ride">Add Ride</string>
+    <string name="add_shop">Add Shop</string>
+    <string name="add_room">Add Room</string>
+    <string name="add_race">Add Race</string>
+    <string name="beta">BETA</string>
 </resources>

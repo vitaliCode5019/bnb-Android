@@ -45,6 +45,8 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocomplete;
+import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
+import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -83,6 +85,10 @@ public class MapsActivity extends FragmentActivity implements
     List<View> tabs;
     @BindView(R.id.fragment_container)
     View fragmentContainer;
+    @BindView(R.id.btnAddNew)
+    Button btnAddNew;
+    @BindView(R.id.lbl_title)
+    TextView lblTitle;
 
     @OnClick(R.id.imgMyLocation)
     void onMyLocation()
@@ -131,12 +137,20 @@ public class MapsActivity extends FragmentActivity implements
         }
         if (tabIndex == 0) {
             loadGroupRideData();
+            btnAddNew.setText(R.string.add_ride);
+            lblTitle.setText(R.string.add_ride);
         } else if (tabIndex == 1) {
             loadBikeShopData();
+            btnAddNew.setText(R.string.add_shop);
+            lblTitle.setText(R.string.add_shop);
         } else if (tabIndex == 2) {
             loadAccommodationData();
+            btnAddNew.setText(R.string.add_room);
+            lblTitle.setText(R.string.add_room);
         } else if (tabIndex == 3) {
             loadRaceData();
+            btnAddNew.setText(R.string.add_race);
+            lblTitle.setText(R.string.add_race);
         }
     }
 
@@ -229,12 +243,32 @@ public class MapsActivity extends FragmentActivity implements
         mapFragment.getMapAsync(this);
 
         setTabItemSelected(0);
+
+        PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
+                getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
+
+        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(Place place) {
+                // TODO: Get info about the selected place.
+                Log.i(TAG, "Place: " + place.getName());
+                if(mMap != null) {
+                    CameraUpdate cu = CameraUpdateFactory.newLatLngZoom(place.getLatLng(), 12);
+                    mMap.animateCamera(cu);
+                }
+            }
+
+            @Override
+            public void onError(Status status) {
+                // TODO: Handle the error.
+                Log.i(TAG, "An error occurred: " + status);
+            }
+        });
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.getUiSettings().setMyLocationButtonEnabled(false);
         mMap.setOnMarkerClickListener(this);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -448,11 +482,14 @@ public class MapsActivity extends FragmentActivity implements
         }
 
         if(mLocation != null) {
-            builder.include(new LatLng(mLocation.getLatitude(), mLocation.getLongitude()));
-        }
+            //builder.include(new LatLng(mLocation.getLatitude(), mLocation.getLongitude()));
+            CameraUpdate cu = CameraUpdateFactory.newLatLngZoom(new LatLng(mLocation.getLatitude(), mLocation.getLongitude()), 10);
+            mMap.animateCamera(cu);
+        } else {
 
-        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(builder.build(), 50);
-        mMap.animateCamera(cu);
+            CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(builder.build(), 50);
+            mMap.animateCamera(cu);
+        }
     }
 
     private void initFragment()
