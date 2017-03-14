@@ -80,6 +80,8 @@ public class MapsActivity extends FragmentActivity implements
 
     private static final String TAG = "MainActivity";
     private static final String LOCATION_KEY = "LOCATION";
+    private int[] tabImageIds = {R.id.img_tab1, R.id.img_tab2, R.id.img_tab3, R.id.img_tab4};
+    private int[] tabLabelIds = {R.id.lbl_tab1, R.id.lbl_tab2, R.id.lbl_tab3, R.id.lbl_tab4};
     //region UI
     @BindViews({R.id.tab1, R.id.tab2, R.id.tab3, R.id.tab4})
     List<View> tabs;
@@ -123,8 +125,8 @@ public class MapsActivity extends FragmentActivity implements
         if (mSourceType == tabIndex) return;
 
         for (int i = 0; i < 4; i++) {
-            ImageView tabIcon = (ImageView) tabs.get(i).findViewById(R.id.img_tab);
-            TextView tabLabel = (TextView) tabs.get(i).findViewById(R.id.lbl_tab);
+            ImageView tabIcon = (ImageView) findViewById(tabImageIds[i]);
+            TextView tabLabel = (TextView) findViewById(tabLabelIds[i]);
             tabIcon.clearColorFilter();
             if (i == tabIndex) {
                 tabIcon.getDrawable().setColorFilter(0xFF0077FF, PorterDuff.Mode.SRC_ATOP);
@@ -138,19 +140,19 @@ public class MapsActivity extends FragmentActivity implements
         if (tabIndex == 0) {
             loadGroupRideData();
             btnAddNew.setText(R.string.add_ride);
-            lblTitle.setText(R.string.add_ride);
+            lblTitle.setText(R.string.group_rides);
         } else if (tabIndex == 1) {
             loadBikeShopData();
             btnAddNew.setText(R.string.add_shop);
-            lblTitle.setText(R.string.add_shop);
+            lblTitle.setText(R.string.bike_shops);
         } else if (tabIndex == 2) {
             loadAccommodationData();
             btnAddNew.setText(R.string.add_room);
-            lblTitle.setText(R.string.add_room);
+            lblTitle.setText(R.string.accommodations);
         } else if (tabIndex == 3) {
             loadRaceData();
             btnAddNew.setText(R.string.add_race);
-            lblTitle.setText(R.string.add_race);
+            lblTitle.setText(R.string.races);
         }
     }
 
